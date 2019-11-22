@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
 
-    @user = User.find_by(name:=> params[:user][:name])
+    @user = User.find_by(name: params[:user][:name])
     raise @user.inspect
     #if @user
     #  return head(:forbidden) unless @user.authenticate(params[:password])
