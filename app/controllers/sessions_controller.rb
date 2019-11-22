@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
 
     @user = User.find_by(name: params[:user][:name])
     if @user
-     return head(:forbidden) unless @user.authenticate(params[:password])
+      raise @user.inspect
+      return head(:forbidden) unless @user.authenticate(params[:password])
       session[:user_id] = @user.id
     else
      redirect_to login_path
