@@ -7,13 +7,9 @@ class UsersController < ApplicationController
     if params[:password] != params[:password_confirmation]
       redirect_to signup_path
     end
-    
+
     @user = User.create(user_params)
-    if @user
-      session[:user_id] = @user.id
-    else
-      redirect_to signup_path
-    end
+    session[:user_id] = @user.id
   end
 
   private
