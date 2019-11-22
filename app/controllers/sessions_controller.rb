@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    raise params.inspect
     @user = User.find_by(name: params[:name])
+    raise @user
     #if @user
     #  return head(:forbidden) unless @user.authenticate(params[:password])
       session[:user_id] = @user.id
