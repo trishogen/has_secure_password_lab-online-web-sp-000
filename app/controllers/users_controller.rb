@@ -2,9 +2,14 @@ class UsersController < ApplicationController
 
   def new
   end
-  
+
   def create
-    User.create(user_params)
+    @user = User.create(user_params)
+    if @user
+      session[:user_id] = @user.id
+    else
+      redirect_to signup_path
+    end
   end
 
   private
